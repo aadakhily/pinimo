@@ -1,0 +1,34 @@
+// $bg-color: #eee;
+// $text-color: #333;
+// $gray-light: #fafafa;
+// $primary-color: #e6123d;
+// $white-color: #fff;
+
+// Variables
+:root {
+  --primary:#e6123d ;
+
+//   --yellow: #f1c61b;
+//   --green: #37f286;
+//   --red: #ef4130;
+
+  --black: #302832;
+  --gray-400: #6d686f;
+  --gray-300: #979398;
+  --gray-200: #eae9ea;
+  --gray-100: #f4f4f4;
+  --gray-050: #fbfafb;
+  --white: #ffffff;
+  --box-shadow-light: 10px 10px 20px -12px rgba(0, 0, 0, 0.41);
+  --box-shadow-medium: 10px 10px 27px -7px rgba(0, 0, 0, 0.41);
+  --font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+
+// breakpoints
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;

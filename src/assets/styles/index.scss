@@ -1,0 +1,8 @@
+@import './variables.scss';
+@import "./reset.scss";
+
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--gray-100);
+}

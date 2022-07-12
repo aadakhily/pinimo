@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {}
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "users": [
+    {
+      "email": "enaadb@gmail.com",
+      "password": "$2a$10$.Pj4M4XO3pFjQi2vWon/t.jSLqVMNiBKVruf5YfBEdyQ/YYd49GxW",
+      "firstName": "amir abbas",
+      "lastName": "dakhily",
+      "id": 1
+    },
+    {
+      "email": "ennnnaadb@gmail.com",
+      "password": "$2a$10$Wz.YVsv1GhV1M4W/i3K/7uDOaUIk8mZgLASI7R9ugD8ASZO/.U5Se",
+      "firstName": "amir abbas",
+      "lastName": "dakhily",
+      "id": 2
+    }
+  ]
+}
