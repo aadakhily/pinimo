@@ -1,0 +1,17 @@
+.layout {
+  display: flex;
+  margin: 1rem 0.5rem;
+  position: relative;
+  &__menu{
+    left: 0.75rem;
+    position: fixed;
+  }
+  .page {
+    flex-basis: 95%;
+    margin-left: 4rem;
+  }
+}
+
+.flex{
+  display: flex;
+}

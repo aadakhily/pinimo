@@ -1,0 +1,38 @@
+.serach-header {
+  display: flex;
+  align-items: center;
+
+  &__input-label {
+    width: 100%;
+    padding: 0.5rem 0.875rem;
+    border-radius: 0.75rem;
+    box-shadow: var(--box-shadow-light);
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+  }
+
+  &__input{
+    all: unset;
+    width: 100%;
+    margin: 0 0.5rem;
+    padding: 0.5rem 0;
+  }
+
+  &__new-post-btn {
+    all: unset;
+    margin-left: 0.75rem;
+    width: 5rem;
+    cursor: pointer;
+    color: var(--gray-050);
+    box-shadow: var(--box-shadow-light);
+    padding: 0.875rem 1rem;
+    border-radius: 0.75rem;
+    background-color: var(--primary);
+  }
+
+  &__filters{
+    all: unset; 
+    cursor: pointer;
+  }
+}

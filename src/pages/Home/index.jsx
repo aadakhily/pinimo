@@ -1,22 +1,12 @@
-import useFetch from '../../hooks/useFetch'
-// import { useEffect, useState } from 'react'
-
+import DefaultLayout from '../../layouts/default'
+import SearchHeader from '../../components/SearchHeader'
+import PostList from '../../components/PostList'
 const Home = () => {
-  // const { data , loading } = useFetch({ url: '/users' })
-
-  // console.log(data);
-
   return (
-    <div>ltwrlweklrwekl <div>
-      {/* {loading &&  <div>loading</div>}
-
-
-      {
-       !loading && data?.map(item => <div key={item.email}>{item.email}</div>)
-      } */}
-
-    </div>
-    </div>
+    <DefaultLayout>
+      <SearchHeader />
+      <PostList />
+    </DefaultLayout>
   )
 }
 
