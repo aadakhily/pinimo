@@ -1,11 +1,26 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
-import Home from "../pages/Home/index";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
+import { useContext, useEffect } from 'react';
+import { Routes, Route  , useNavigate} from "react-router-dom";
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import Home from "../pages/Home/index";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+
+import authContext from '../context/auth';
+
 const App = () => {
+  const navigate = useNavigate()
+
+  const { loadTokenAndUser, token } = useContext(authContext)
+
+  useEffect(() => {
+    loadTokenAndUser()
+    
+    if (!token) return navigate('/login', { replace: true })
+  }, [token])
+
   return (
     <>
       <Routes>

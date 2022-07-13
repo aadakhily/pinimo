@@ -1,6 +1,7 @@
+import PostList from '../../components/PostList'
 import DefaultLayout from '../../layouts/default'
 import SearchHeader from '../../components/SearchHeader'
-import PostList from '../../components/PostList'
+
 const Home = () => {
   return (
     <DefaultLayout>

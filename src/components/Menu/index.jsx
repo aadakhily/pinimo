@@ -1,19 +1,25 @@
-import classes from './menu.module.scss'
-import HomeIcon from '../../assets/icons/homeicon.svg';
-import Logo from '../../assets/icons/logo.svg';
+import { useContext } from 'react';
+import authContext from '@/context/auth';
+import { Link} from 'react-router-dom'
+import Logo from '@/assets/icons/logo.svg';
+import HomeIcon from '@/assets/icons/homeicon.svg';
+import LogoutIcon from '@/assets/icons/logout.svg';
 
+import classes from './menu.module.scss'
 function Menu({ className }) {
+    const {logout} = useContext(authContext)
+    
     return (<menu className={`${className} ${classes['menu']}`}>
         <div className={classes['meun__logo']}>
             <img src={Logo} alt="logo" />
         </div>
 
         <div className={classes['menu__links']}>
-            <a href="" className={classes['menu__link-icon']}><img src={HomeIcon} /></a>
-            <a href="" className={classes['menu__link-icon']}><img src={HomeIcon} /></a>
-            <a href="" className={classes['menu__link-icon']}><img src={HomeIcon} /></a>
-            <a href="" className={classes['menu__link-icon']}><img src={HomeIcon} /></a>
-            <a href="" className={classes['menu__link-icon']}><img src={HomeIcon} /></a>
+            <Link to='/' className={classes['menu__link-icon']}><img src={HomeIcon} /></Link>
+            <a href="#" className={classes['menu__link-icon']}><img src={HomeIcon} /></a>
+            <a href="#" className={classes['menu__link-icon']}><img src={HomeIcon} /></a>
+            <a href="#" className={classes['menu__link-icon']}><img src={HomeIcon} /></a>
+            <button onClick={logout} className={classes['menu__logout-button']}><img src={LogoutIcon} /></button>
         </div>
 
         <div className={classes['menu__user']}>

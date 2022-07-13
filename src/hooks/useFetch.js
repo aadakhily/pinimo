@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import axiosInstanse  from '../utils/axiosInstanse'
+import fetchApi  from '../utils/fetchApi'
 
 function useFetch(options) {
     const [data, setData] = useState()
@@ -13,7 +13,7 @@ function useFetch(options) {
     async function fetchData() {
         try {
             setloading(true)
-            const { data:res } = await axiosInstanse(options)
+            const { data:res } = await fetchApi(options)
             setData(res)
 
             console.log(data);

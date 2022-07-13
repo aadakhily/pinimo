@@ -1,18 +1,25 @@
-import { useForm } from 'react-hook-form'
-import axiosInstanse from '../../utils/axiosInstanse'
-import classes from './register.module.scss'
-import { useNavigate } from 'react-router-dom'
+
+import { useContext } from 'react';
 import { toast } from 'react-toastify';
-import { REGEX_PATERN_FOR_EMAIL } from '../../utils/validation'
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+
+import fetchApi from '@/utils/fetchApi'
+import { REGEX_PATERN_FOR_EMAIL } from '@/utils/validation'
+
+import authContext from '@/context/auth';
+
+import classes from './register.module.scss'
 
 function Register() {
     const { register, handleSubmit, formState: { errors } } = useForm()
     const navigate = useNavigate()
-
+    const { login } = useContext(authContext)
 
     async function registerHandler(formData) {
         try {
-            const { data } = await axiosInstanse.post('/register', formData)
+            const { data } = await fetchApi.post('/register', formData)
+            login(data)
             toast.success(`Welcome ${data.user.firstName} ${data.user.lastName}`)
             navigate('/', { replace: true })
         } catch (error) {

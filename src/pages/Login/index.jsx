@@ -1,21 +1,28 @@
+import { useContext } from 'react';
 import { toast } from 'react-toastify';
-import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import axiosInstanse from '../../utils/axiosInstanse'
-import { REGEX_PATERN_FOR_EMAIL } from '../../utils/validation'
+import { Link, useNavigate } from 'react-router-dom'
+
+import fetchApi from '@/utils/fetchApi'
+import { REGEX_PATERN_FOR_EMAIL } from '@/utils/validation'
+
 import classes from './login.module.scss'
+
+import authContext from '@/context/auth';
 
 
 function Login() {
+  const { login } = useContext(authContext)
+
   const navigate = useNavigate()
   const { register, handleSubmit, formState: { errors } } = useForm()
 
   async function loginHandler(formData) {
     try {
-      const { data } = await axiosInstanse.post('/login', formData)
+      const { data } = await fetchApi.post('/login', formData);
+      login(data)
       toast.success(`Welcome ${data.user.firstName} ${data.user.lastName}`)
       navigate('/', { replace: true })
-
     } catch (error) {
       toast.error(error.response.data)
       console.error(error)
