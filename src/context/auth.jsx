@@ -1,25 +1,33 @@
-import { createContext, useState } from 'react'
+import { useNavigate } from "react-router-dom";
+import { createContext, useState, useEffect } from 'react'
 
 const authContext = createContext({
     token: '',
     user: {},
     login: () => { },
     logout: () => { },
-    loadTokenAndUser: () => { }
 })
 
 export const AuthProvider = ({ children }) => {
+    const navigate = useNavigate()
     const [token, setToken] = useState('')
     const [currentUser, setCurrentUser] = useState({});
 
+    useEffect(() => {
+        const { localToken, localUser } = loadLocalToken()
 
-    function loadTokenAndUser() {
+        if (!localToken) return navigate('/login', { replace: true })
+
+        setToken(localToken)
+        setCurrentUser(localUser)
+    }, [token])
+
+
+    function loadLocalToken() {
         const localToken = localStorage.getItem('token')
         const localUser = localStorage.getItem('user')
 
-
-        setToken(localToken)
-        setCurrentUser(JSON.parse(localUser))
+        return { localToken, localUser: JSON.parse(localUser) }
     }
 
     function login({ accessToken, user }) {
@@ -43,7 +51,6 @@ export const AuthProvider = ({ children }) => {
         login,
         logout,
         currentUser,
-        loadTokenAndUser
     }
 
     return (

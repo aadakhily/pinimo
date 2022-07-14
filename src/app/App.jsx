@@ -1,5 +1,5 @@
-import { useContext, useEffect } from 'react';
-import { Routes, Route  , useNavigate} from "react-router-dom";
+// import { useContext, useEffect } from 'react';
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,26 +7,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import Home from "../pages/Home/index";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-
-import authContext from '../context/auth';
+// import authContext from '../context/auth';
+import NewPin from '../pages/NewPin';
 
 const App = () => {
-  const navigate = useNavigate()
-
-  const { loadTokenAndUser, token } = useContext(authContext)
-
-  useEffect(() => {
-    loadTokenAndUser()
-    
-    if (!token) return navigate('/login', { replace: true })
-  }, [token])
-
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/new-pin" element={<NewPin />} />
+
         <Route path="/*" element={<Login />} />
       </Routes>
 

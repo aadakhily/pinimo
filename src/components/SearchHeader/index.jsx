@@ -1,6 +1,7 @@
 import classes from './searchHeader.module.scss'
 import searchIcon from '@/assets/icons/search.svg'
 import filterIcon from '@/assets/icons/filters.svg'
+import { Link } from 'react-router-dom';
 
 function SearchHeader() {
     return (
@@ -11,7 +12,7 @@ function SearchHeader() {
                 <button className={classes['serach-header__filters']}><img src={filterIcon} alt="filterIcon" /></button>
             </label>
 
-            <button className={classes['serach-header__new-post-btn']}>New Post</button>
+            <Link to='/new-pin' className={classes['serach-header__new-post-btn']}>New Pin</Link>
         </div>
     );
 }

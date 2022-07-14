@@ -20,9 +20,11 @@
   }
 
   &__new-post-btn {
-    all: unset;
+    // all: unset;
+    text-decoration: none;
     margin-left: 0.75rem;
     width: 5rem;
+    text-align: center;
     cursor: pointer;
     color: var(--gray-050);
     box-shadow: var(--box-shadow-light);
