@@ -1,12 +1,12 @@
-.post {
+.pin {
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
   border-radius: 0.75rem;
   background-color: var(--white);
-  margin: 1rem 0.25rem;
-  // width: 100%;
+  margin: 0.5rem 0.25rem;
   box-shadow: var(--box-shadow-light);
+  text-decoration: none;
 
   &__img-container {
     width: 100%;

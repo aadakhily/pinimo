@@ -1,17 +1,22 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form'
+import {useNavigate} from 'react-router-dom'
 
 import fetchApi from '@/utils/fetchApi'
 import DefaultLayout from "@/layouts/default"
-    ;
 import uploadIcon from '@/assets/icons/upload.svg'
 import deleteIcon from '@/assets/icons/delete.svg'
 
 import classes from './newPin.module.scss'
+
+import authContext from '@/context/auth'
+
 function NewPost() {
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [image, setImage] = useState();
-
+    const { currentUser } = useContext(authContext)
+    const navigate = useNavigate()
 
     function convertBase64(file) {
         return new Promise((resolve, reject) => {
@@ -43,10 +48,11 @@ function NewPost() {
 
     async function handelNewPinForm(formData) {
         try {
-            const body = { ...formData, image }
-            console.log('form', body);
+            const body = { ...formData, image, creator: currentUser }
             const { data } = await fetchApi.post('/pins', body)
-            console.log(data);
+
+            toast.success('Pin Created Successfully')
+            navigate('/', { replace: true })
 
         } catch (error) {
 

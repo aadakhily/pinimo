@@ -22,6 +22,19 @@
 
   &__link-icon {
     margin: 1rem 0;
+    background-color: var(--gray-200);
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+  }
+
+  &__link-icon-active{
+    @extend .menu__link-icon;
+    background-color: var(--primary);
+    // color: ;
+    img{
+
+      filter: invert(100%)
+    }
   }
 
   &__user {

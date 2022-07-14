@@ -7,8 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Home from "../pages/Home/index";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-// import authContext from '../context/auth';
 import NewPin from '../pages/NewPin';
+import PinPage from '../pages/PinPage';
 
 const App = () => {
   return (
@@ -18,6 +18,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/new-pin" element={<NewPin />} />
+        <Route path="/pin/:pinId" element={<PinPage />} />
 
         <Route path="/*" element={<Login />} />
       </Routes>

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import authContext from '@/context/auth';
-import { Link} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import Logo from '@/assets/icons/logo.svg';
 import HomeIcon from '@/assets/icons/homeicon.svg';
 import LogoutIcon from '@/assets/icons/logout.svg';
@@ -15,10 +15,12 @@ function Menu({ className }) {
         </div>
 
         <div className={classes['menu__links']}>
-            <Link to='/' className={classes['menu__link-icon']}><img src={HomeIcon} /></Link>
-            <a href="#" className={classes['menu__link-icon']}><img src={HomeIcon} /></a>
-            <a href="#" className={classes['menu__link-icon']}><img src={HomeIcon} /></a>
-            <a href="#" className={classes['menu__link-icon']}><img src={HomeIcon} /></a>
+            <NavLink to='/'className={({ isActive }) =>
+              isActive ? classes['menu__link-icon-active'] : classes['menu__link-icon']
+            } ><img src={HomeIcon} /></NavLink>
+            {/* <a href="#" className={classes['menu__link-icon']}><img src={HomeIcon} /></a> */}
+            {/* <a href="#" className={classes['menu__link-icon']}><img src={HomeIcon} /></a> */}
+            {/* <a href="#" className={classes['menu__link-icon']}><img src={HomeIcon} /></a> */}
             <button onClick={logout} className={classes['menu__logout-button']}><img src={LogoutIcon} /></button>
         </div>
 
