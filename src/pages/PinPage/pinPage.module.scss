@@ -81,23 +81,20 @@
       font-size: 0.875rem;
       color: var(--gray-400);
     }
-
-    &__download {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
   }
 
-  &__iteractions{
+  &__iteractions {
     display: flex;
     align-items: center;
   }
 
-  &__share-button{
+  &__interaction-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     all: unset;
     cursor: pointer;
-    margin: 0 0.75rem;
+    margin-right: 1rem;
   }
 }
 
@@ -114,7 +111,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .pin-page{
+  .pin-page {
     padding: 0.25rem;
   }
 
@@ -122,30 +119,30 @@
     flex-direction: column;
     padding: 0.5rem;
 
-    &__title{
+    &__title {
       font-size: 1.75rem;
       margin: 0.75rem 0;
     }
 
-    &__description{
+    &__description {
       margin: 0.75rem 0;
-      font-size:0.875rem ;
+      font-size: 0.875rem;
     }
 
-    &__details{
+    &__details {
       margin-left: 0;
-      padding: 0.5rem ;
+      padding: 0.5rem;
     }
-    
-    &__overview{
+
+    &__overview {
       padding-top: 0.5rem;
     }
   }
 
-  .other-pins{
+  .other-pins {
     margin-top: 0.5rem;
 
-    &__title{
+    &__title {
       font-size: 1rem;
       margin: 0.5rem;
     }

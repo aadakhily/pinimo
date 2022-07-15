@@ -18,34 +18,17 @@
   &__link-icon {
     margin: 1rem 0;
     padding: 0.25rem;
-    border-radius: 8px;
+    border-radius:8px;
   }
 
   &__link-icon-active{
     @extend .navigation-bar__link-icon;
     background-color: var(--primary);
 
-    padding: 0.125rem 0.25rem;
+    padding: 3px 4px;
 
     img{
       filter: invert(100%)
-    }
-  }
-
-  &__user {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &-avatar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 2rem;
-      height: 2rem;
-      text-align: center;
-      border-radius: 50%;
-      background-color: var(--gray-300);
-      color: var(--white);
     }
   }
 
@@ -72,7 +55,7 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      flex-basis: 50%;
+      flex-basis: 70%;
       padding: 0 0.75rem;
     }
     
@@ -82,6 +65,10 @@
 
     &__logo{
       display: none;
+    }
+
+    &__logout-button{
+      padding: 0.5rem 1rem;
     }
   }
 }

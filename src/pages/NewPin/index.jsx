@@ -2,17 +2,19 @@ import { useState, useContext } from "react";
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import authContext from '@/context/auth'
 
+// utils
 import fetchApi from '@/utils/fetchApi'
 import convertBase64 from '@/utils/convertor'
 import DefaultLayout from "@/layouts/default"
 
+// icons
 import uploadIcon from '@/assets/icons/upload.svg'
 import deleteIcon from '@/assets/icons/delete.svg'
 
+// style
 import classes from './newPin.module.scss'
-
-import authContext from '@/context/auth'
 
 function NewPost() {
     const navigate = useNavigate()
@@ -45,7 +47,7 @@ function NewPost() {
 
         }
     }
-    
+
     return (
         <DefaultLayout>
             <div className={classes['new-pin']}>

@@ -1,9 +1,13 @@
 import { useContext, useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import fetchApi from '@/utils/fetchApi';
-import classes from './comments.module.scss'
-import authContext from '../../context/auth'
 import { Link } from 'react-router-dom';
+import authContext from '../../context/auth'
+
+// util
+import fetchApi from '@/utils/fetchApi';
+
+// style
+import classes from './comments.module.scss'
 
 function Comments({ pinId }) {
     const [commentsData, setCommentsData] = useState([])

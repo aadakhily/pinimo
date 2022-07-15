@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from 'react'
 
 const authContext = createContext({
     token: '',
-    user: {},
+    currentUser: {},
     login: () => { },
     logout: () => { },
 })
@@ -31,11 +31,11 @@ export const AuthProvider = ({ children }) => {
     }
 
     function login({ accessToken, user }) {
-        const { email, firstName, lastName, id } = user 
+        const { email, firstName, lastName, id } = user
         localStorage.setItem('token', accessToken);
-        localStorage.setItem('user', JSON.stringify({ email, firstName, lastName, id}));
-        
-        setCurrentUser({ email, firstName, lastName, id});
+        localStorage.setItem('user', JSON.stringify({ email, firstName, lastName, id }));
+
+        setCurrentUser({ email, firstName, lastName, id });
         setToken(accessToken)
     }
 

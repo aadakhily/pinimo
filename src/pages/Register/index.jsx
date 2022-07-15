@@ -20,7 +20,9 @@ function Register() {
         try {
             const { data } = await fetchApi.post('/register', formData)
             login(data)
+
             toast.success(`Welcome ${data.user.firstName} ${data.user.lastName}`)
+            
             navigate('/', { replace: true })
         } catch (error) {
             toast.error(error.response.data)

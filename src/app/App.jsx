@@ -9,7 +9,8 @@ import Login from "@/pages/Login";
 import NewPin from '@/pages/NewPin';
 import PinPage from '@/pages/PinPage';
 import Register from "@/pages/Register";
-import UserPage from "../pages/User";
+import BookmarkPage from "@/pages/Bookmark";
+import UserPage from "@/pages/User";
 
 const App = () => {
   return (
@@ -26,6 +27,8 @@ const App = () => {
         <Route path="/pin/:pinId" element={<PinPage />} />
 
         <Route path="/user/:userId" element={<UserPage />} />
+
+        <Route path="/bookmarks" element={<BookmarkPage />} />
 
         <Route path="/*" element={<Home />} />
       </Routes>

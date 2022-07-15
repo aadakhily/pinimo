@@ -1,19 +1,27 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect , useContext} from 'react'
 import { useParams, Link } from 'react-router-dom'
-import classes from './pinPage.module.scss'
-import DefaultLayout from '../../layouts/default'
-import fetchApi from '../../utils/fetchApi';
+import authContext from '@/context/auth'
+import { toast } from 'react-toastify'
+// utils
+import fetchApi from '@/utils/fetchApi';
 
+//icons
 import shareIcon from '@/assets/icons/share.svg'
 import downloadIcon from '@/assets/icons/download.svg'
+import bookmarkIcon from '@/assets/icons/addbookmark.svg'
 
-
+// components
+import DefaultLayout from '@/layouts/default'
 import PinsList from '@/components/PinsList';
 import Comments from '@/components/Comments';
+
+//style
+import classes from './pinPage.module.scss'
 
 function PinPage() {
     const { pinId } = useParams()
     const [pin, setPin] = useState({})
+    const { currentUser } = useContext(authContext)
     const [loading, setLoading] = useState(false)
     const [otherPins, setOtherPins] = useState([])
 
@@ -43,7 +51,7 @@ function PinPage() {
             setOtherPins(data)
         } catch (error) {
             console.error(error)
-        }finally{
+        } finally {
             setLoading(false)
         }
     }
@@ -65,6 +73,20 @@ function PinPage() {
         }
     }
 
+    async function bookmarkPin(){
+        try {
+            const body = {
+                owner:currentUser?.id,
+                ...pin
+            }
+
+            const { data } = await fetchApi.post('/bookmarks',body)
+            toast.success('Pin Bookmarked Successfully')
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     return (
         <DefaultLayout>
             <div className={classes['pin-page']}>
@@ -76,11 +98,13 @@ function PinPage() {
                     <div className={classes['pin-info__details']}>
                         <div className={classes['pin-info__overview']}>
                             <div className={classes['pin-info__iteractions']}>
-                                <a download={`${pin.title}.jpg`} href={pin.image} className={classes['pin-info__download']}>
+                                <a download={`${pin.title}.jpg`} href={pin.image} className={classes['pin-info__interaction-button']}>
                                     <img src={downloadIcon} alt="download-icon" />
                                 </a>
 
-                                <button onClick={sharePin} className={classes['pin-info__share-button']}><img src={shareIcon} alt="share-icon" /></button>
+                                <button onClick={sharePin} className={classes['pin-info__interaction-button']}><img src={shareIcon} alt="share-icon" /></button>
+
+                                <button onClick={bookmarkPin} className={classes['pin-info__interaction-button']}><img src={bookmarkIcon} alt="bookmark-icon" /></button>
                             </div>
 
                             <span className={classes['pin-info__overview-text']}>{`'${pin.title}' by ${pin?.creator?.firstName} ${pin?.creator?.lastName}`}</span>
