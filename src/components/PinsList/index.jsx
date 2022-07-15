@@ -15,7 +15,7 @@ const breakpointColumnsObj = {
 
 const PostList = ({pins}) => (
     <Masonry className={classes['pins-list']} breakpointCols={breakpointColumnsObj}>
-        {pins.map((pin) => <Pin key={pin.id} pin={pin} />)}
+        {pins?.map((pin) => <Pin key={pin.id} pin={pin} />)}
     </Masonry>
 );
 

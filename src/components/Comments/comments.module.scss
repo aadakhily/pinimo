@@ -1,6 +1,12 @@
 .comments {
   width: 100%;
 
+  h5 {
+    color: var(--black);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
   &__input {
     width: 100%;
     all: unset;
@@ -42,13 +48,14 @@
     align-items: center;
     margin: 0.875rem 0;
   }
-
+  
   &__user-name {
+    text-decoration: none;
     font-size: 0.75rem;
     color: var(--gray-300);
     margin-bottom: 0.125rem;
   }
-  
+
   &__comment-text {
     margin: 0;
     font-size: 1rem;
@@ -57,7 +64,8 @@
   &__user-info {
     display: flex;
     flex-direction: column;
-    margin-left: 0.5rem;
+    margin-left: 0.25rem;
+    text-decoration: none;
   }
 
   &__avatar {
@@ -66,6 +74,7 @@
     justify-content: center;
     width: 2rem;
     height: 2rem;
+    text-decoration: none;
     text-align: center;
     border-radius: 50%;
     background-color: var(--gray-300);

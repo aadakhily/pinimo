@@ -4,20 +4,29 @@ import { NavLink } from 'react-router-dom'
 import Logo from '@/assets/icons/logo.svg';
 import HomeIcon from '@/assets/icons/homeicon.svg';
 import LogoutIcon from '@/assets/icons/logout.svg';
+import bookmarkIcon from '@/assets/icons/bookmark.svg';
 
 import classes from './menu.module.scss'
 function Menu({ className }) {
-    const {logout} = useContext(authContext)
-    
+    const { logout } = useContext(authContext)
+
     return (<menu className={`${className} ${classes['menu']}`}>
         <div className={classes['meun__logo']}>
             <img src={Logo} alt="logo" />
         </div>
 
         <div className={classes['menu__links']}>
-            <NavLink to='/'className={({ isActive }) =>
-              isActive ? classes['menu__link-icon-active'] : classes['menu__link-icon']
-            } ><img src={HomeIcon} /></NavLink>
+            <NavLink to='/' className={({ isActive }) =>
+                isActive ? classes['menu__link-icon-active'] : classes['menu__link-icon']
+            } >
+                <img src={HomeIcon} />
+            </NavLink>
+            
+            <NavLink to='/bookmarks' className={({ isActive }) =>
+                isActive ? classes['menu__link-icon-active'] : classes['menu__link-icon']
+            } >
+                <img src={bookmarkIcon} />
+            </NavLink>
             {/* <a href="#" className={classes['menu__link-icon']}><img src={HomeIcon} /></a> */}
             {/* <a href="#" className={classes['menu__link-icon']}><img src={HomeIcon} /></a> */}
             {/* <a href="#" className={classes['menu__link-icon']}><img src={HomeIcon} /></a> */}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams , Link } from 'react-router-dom'
 import classes from './pinPage.module.scss'
 import DefaultLayout from '../../layouts/default'
 import fetchApi from '../../utils/fetchApi';
@@ -7,6 +7,7 @@ import fetchApi from '../../utils/fetchApi';
 import downloadIcon from '@/assets/icons/download.svg'
 import PinsList from '@/components/PinsList';
 import Comments from '../../components/Comments';
+
 function PinPage() {
     const { pinId } = useParams()
     const [pin, setPin] = useState({})
@@ -40,7 +41,7 @@ function PinPage() {
 
     useEffect(() => {
         fetchPin()
-    }, [])
+    }, [pinId])
 
     return (
         <DefaultLayout>
@@ -63,13 +64,13 @@ function PinPage() {
                         <p className={classes['pin-info__description']}>{pin.description}</p>
                         {pin.descriptionLink && <span className={classes['pin-info__description-link']}>{pin.descriptionLink}</span>}
 
-                        <div className={classes['pin-info__user']}>
+                        <Link to={`/user/${pin?.creator?.id}`} className={classes['pin-info__user']}>
                             <div className={classes['pin-info__avatar']}>{`${pin?.creator?.firstName[0]}${pin?.creator?.lastName[0]}`}</div>
                             <div className={classes['pin-info__user-info']}>
                                 <p className={classes['pin-info__user-name']}>{`${pin?.creator?.firstName} ${pin?.creator?.lastName}`}</p>
                                 <span className={classes['pin-info__user-email']}>{pin?.creator?.email}</span>
                             </div>
-                        </div>
+                        </Link>
 
                         <Comments pinId={pinId} />
                     </div>
@@ -78,7 +79,7 @@ function PinPage() {
                 {
                     otherPins &&
                     <div className={classes['other-pins']}>
-                        <h3 className={classes['other-pins__title']}>See more Pins</h3>
+                        <h3 className={classes['other-pins__title']}>See More Pins</h3>
                         <PinsList pins={otherPins} />
                     </div>
                 }

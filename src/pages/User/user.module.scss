@@ -1,0 +1,68 @@
+.user-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.user {
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  position: relative;
+
+  &__background {
+    width: 100%;
+    height: 200px;
+    background-color: var(--gray-200);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__avatar {
+    width: 120px;
+    height: 120px;
+    background-color: var(--gray-200);
+    border-radius: 50%;
+    border: 4px solid var(--gray-100);
+    overflow: hidden;
+    margin-top: -4.5rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    color: var(--black);
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    margin: 0.75rem 0;
+  }
+
+  &__email {
+    color: var(--gray-300);
+    margin-bottom: 1rem;
+  }
+
+  &__pins {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    h3 {
+      text-align: center;
+      text-transform: capitalize;
+      color: var(--gray-400);
+      font-weight: 400;
+      font-size: 1rem;
+    }
+  }
+}

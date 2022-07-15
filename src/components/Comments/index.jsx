@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import fetchApi from '@/utils/fetchApi';
 import classes from './comments.module.scss'
 import authContext from '../../context/auth'
+import { Link } from 'react-router-dom';
 
 function Comments({ pinId }) {
     const [commentsData, setCommentsData] = useState([])
@@ -23,8 +24,6 @@ function Comments({ pinId }) {
             })
 
             setCommentsData(data)
-
-            console.log('comments', data);
         } catch (error) {
 
         }
@@ -39,20 +38,22 @@ function Comments({ pinId }) {
             }
 
             const { data } = await fetchApi.post('/comments', body)
-
+            setCommentsData((oldComments) =>([...oldComments, data]))
         } catch (error) {
 
         }
     }
+
     return (<div className={classes['comments']}>
         <h5>Comments</h5>
         {
             commentsData?.map(comment => {
                 return (
                     <div key={comment.id} className={classes['comments__user']}>
-                        <div className={classes['comments__avatar']}>{`${comment?.creator?.firstName[0]}${comment?.creator?.lastName[0]}`}</div>
+                        <Link to={`/user/${comment?.creator?.id}`} className={classes['comments__avatar']}>{`${comment?.creator?.firstName[0]}${comment?.creator?.lastName[0]}`}</Link>
+                        
                         <div className={classes['comments__user-info']}>
-                            <span className={classes['comments__user-name']}>{`${comment?.creator?.firstName} ${comment?.creator?.lastName}`}</span>
+                            <Link to={`/user/${comment?.creator?.id}`} className={classes['comments__user-name']}>{`${comment?.creator?.firstName} ${comment?.creator?.lastName}`}</Link>
                             <p className={classes['comments__comment-text']}>{comment.commentText}</p>
                         </div>
                     </div>
