@@ -44,11 +44,11 @@ function UserPage() {
             <div className={classes['user-page']}>
                 <div className={classes['user']}>
                     <div className={classes['user__background']}>
-                        {/* <img src={userPins[2].image} alt="" /> */}
+                        <img src={userPins[2].image} alt="" />
                     </div>
                     
                     <div className={classes['user__avatar']}>
-                        {/* <img src={userPins[7].image} alt="" /> */}
+                        <img src={userPins[7].image} alt="" />
                     </div>
 
                     <h4 className={classes['user__name']}>{`${user?.firstName} ${user?.lastName}`}</h4>

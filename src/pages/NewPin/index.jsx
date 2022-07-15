@@ -1,10 +1,12 @@
 import { useState, useContext } from "react";
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import fetchApi from '@/utils/fetchApi'
+import convertBase64 from '@/utils/convertor'
 import DefaultLayout from "@/layouts/default"
+
 import uploadIcon from '@/assets/icons/upload.svg'
 import deleteIcon from '@/assets/icons/delete.svg'
 
@@ -13,25 +15,10 @@ import classes from './newPin.module.scss'
 import authContext from '@/context/auth'
 
 function NewPost() {
-    const { register, handleSubmit, formState: { errors } } = useForm()
+    const navigate = useNavigate()
     const [image, setImage] = useState();
     const { currentUser } = useContext(authContext)
-    const navigate = useNavigate()
-
-    function convertBase64(file) {
-        return new Promise((resolve, reject) => {
-            const fileReader = new FileReader();
-            fileReader.readAsDataURL(file);
-
-            fileReader.onload = () => {
-                resolve(fileReader.result);
-            };
-
-            fileReader.onerror = (error) => {
-                reject(error);
-            };
-        });
-    };
+    const { register, handleSubmit, formState: { errors } } = useForm()
 
     async function onImageChange(event) {
         const file = event.target.files[0];
@@ -58,6 +45,7 @@ function NewPost() {
 
         }
     }
+    
     return (
         <DefaultLayout>
             <div className={classes['new-pin']}>

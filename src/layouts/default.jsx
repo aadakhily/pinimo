@@ -1,4 +1,4 @@
-import Menu from "../components/Menu";
+import Menu from "../components/NavigationBar";
 import classes from './defaultLayout.module.scss'
 
 function DefaultLayout({ children }) {

@@ -2,10 +2,12 @@
   display: flex;
   margin: 1rem 0.5rem;
   position: relative;
+
   &__menu{
     left: 0.75rem;
     position: fixed;
   }
+  
   .page {
     flex-basis: 95%;
     margin-left: 4rem;
@@ -14,4 +16,25 @@
 
 .flex{
   display: flex;
+}
+
+@media screen and (max-width: 576px) {
+  .layout{
+    margin: 0.75rem 0.25rem;
+    flex-direction: column;
+    
+    .page{
+      flex-basis: 100%;
+      margin: 0;
+    }
+    &__menu{
+      width: 100%;
+      left: 0;
+      bottom:0;
+      position: fixed;
+      z-index: 100;
+      
+    }
+  }
+
 }

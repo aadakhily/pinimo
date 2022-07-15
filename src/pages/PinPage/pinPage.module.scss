@@ -94,12 +94,50 @@
 .other-pins {
   display: flex;
   flex-direction: column;
-  // align-items: center;
   margin-top: 1rem;
 
   &__title {
     align-self: center;
     color: var(--black);
     font-size: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .pin-page{
+    padding: 0.25rem;
+  }
+
+  .pin-info {
+    flex-direction: column;
+    padding: 0.5rem;
+
+    &__title{
+      font-size: 1.75rem;
+      margin: 0.75rem 0;
+    }
+
+    &__description{
+      margin: 0.75rem 0;
+      font-size:0.875rem ;
+    }
+
+    &__details{
+      margin-left: 0;
+      padding: 0.5rem ;
+    }
+    
+    &__overview{
+      padding-top: 0.5rem;
+    }
+  }
+
+  .other-pins{
+    margin-top: 0.5rem;
+
+    &__title{
+      font-size: 1rem;
+      margin: 0.5rem;
+    }
   }
 }

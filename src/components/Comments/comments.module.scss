@@ -18,6 +18,10 @@
     &::placeholder {
       font-size: 0.875rem;
     }
+
+    @media screen and (max-width: 768px) {
+      flex-basis: 90%;
+    }
   }
 
   &__submit {
@@ -48,7 +52,7 @@
     align-items: center;
     margin: 0.875rem 0;
   }
-  
+
   &__user-name {
     text-decoration: none;
     font-size: 0.75rem;
