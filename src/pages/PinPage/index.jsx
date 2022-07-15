@@ -1,22 +1,29 @@
 import { useState, useEffect } from 'react'
-import { useParams , Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import classes from './pinPage.module.scss'
 import DefaultLayout from '../../layouts/default'
 import fetchApi from '../../utils/fetchApi';
 
+import shareIcon from '@/assets/icons/share.svg'
 import downloadIcon from '@/assets/icons/download.svg'
+
+
 import PinsList from '@/components/PinsList';
-import Comments from '../../components/Comments';
+import Comments from '@/components/Comments';
 
 function PinPage() {
     const { pinId } = useParams()
     const [pin, setPin] = useState({})
     const [otherPins, setOtherPins] = useState([])
 
+    useEffect(() => {
+        fetchPin()
+    }, [pinId])
+
     async function fetchPin() {
         try {
             const { data } = await fetchApi.get(`/pins/${pinId}`)
-            
+
             setPin(data)
 
             fetchOtherPins(data.category)
@@ -39,9 +46,22 @@ function PinPage() {
         }
     }
 
-    useEffect(() => {
-        fetchPin()
-    }, [pinId])
+    async function sharePin() {
+        try {
+            const shareData = {
+                title: pin.title,
+
+                text: pin?.description,
+
+                url: window?.location?.href
+            }
+
+            await navigator.share(shareData)
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return (
         <DefaultLayout>
@@ -53,9 +73,13 @@ function PinPage() {
 
                     <div className={classes['pin-info__details']}>
                         <div className={classes['pin-info__overview']}>
-                            <a download={`${pin.title}.jpg`} href={pin.image} className={classes['pin-info__download']}>
-                                <img src={downloadIcon} alt="download-icon" />
-                            </a>
+                            <div className={classes['pin-info__iteractions']}>
+                                <a download={`${pin.title}.jpg`} href={pin.image} className={classes['pin-info__download']}>
+                                    <img src={downloadIcon} alt="download-icon" />
+                                </a>
+
+                                <button onClick={sharePin} className={classes['pin-info__share-button']}><img src={shareIcon} alt="share-icon" /></button>
+                            </div>
 
                             <span className={classes['pin-info__overview-text']}>{`'${pin.title}' by ${pin?.creator?.firstName} ${pin?.creator?.lastName}`}</span>
                         </div>

@@ -89,6 +89,16 @@
     }
   }
 
+  &__iteractions{
+    display: flex;
+    align-items: center;
+  }
+
+  &__share-button{
+    all: unset;
+    cursor: pointer;
+    margin: 0 0.75rem;
+  }
 }
 
 .other-pins {
