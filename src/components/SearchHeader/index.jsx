@@ -1,10 +1,14 @@
-import classes from './searchHeader.module.scss'
-import searchIcon from '@/assets/icons/search.svg'
-import filterIcon from '@/assets/icons/filters.svg'
 import { Link } from 'react-router-dom';
 
-function SearchHeader({ onSearch , value }) {
-    function inputChangeHandler(e){
+// icons
+import searchIcon from '@/assets/icons/search.svg'
+import filterIcon from '@/assets/icons/filters.svg'
+
+//style
+import classes from './searchHeader.module.scss'
+
+function SearchHeader({ onSearch, value }) {
+    function inputChangeHandler(e) {
         onSearch(e.target.value)
     }
 

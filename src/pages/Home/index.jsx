@@ -26,7 +26,13 @@ const Home = () => {
     }
   }
 
-  useEffect(() => { fetchPins() }, [searchInput])
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      fetchPins()
+    }, 350)
+
+    return () => clearTimeout(timeOut)
+  }, [searchInput])
 
   return (
     <DefaultLayout>

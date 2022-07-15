@@ -15,17 +15,19 @@ const breakpointColumnsObj = {
 
 const PostList = ({ pins, loading }) => (
     <div className={classes['pins-list-conatainer']}>
-        <Masonry className={classes['pins-list']} breakpointCols={breakpointColumnsObj}>
-            {
-                loading ?
-                    <div className={classes['loading']}>
-                        <Loading />
-                    </div>
-                    :
-                    pins?.map((pin) => <Pin key={pin.id} pin={pin} />)
-            }
+        {
+            loading ?
+                <div className={classes['loading']}>
+                    <Loading />
+                </div>
+                :
+                <Masonry className={classes['pins-list']} breakpointCols={breakpointColumnsObj}>
+                    {
+                        pins?.map((pin) => <Pin key={pin.id} pin={pin} />)
+                    }
+                </Masonry>
+        }
 
-        </Masonry>
     </div>
 );
 

@@ -10,9 +10,13 @@
     background-color: var(--white);
     display: flex;
     align-items: center;
+
+    @media screen and( max-width:576px) {
+      width: 90%;
+    }
   }
 
-  &__input{
+  &__input {
     all: unset;
     width: 100%;
     margin: 0 0.5rem;
@@ -20,21 +24,25 @@
   }
 
   &__new-post-btn {
-    // all: unset;
-    text-decoration: none;
-    margin-left: 0.75rem;
     width: 5rem;
-    text-align: center;
     cursor: pointer;
+    margin-left: 0.75rem;
+    text-decoration: none;
+    text-align: center;
     color: var(--gray-050);
     box-shadow: var(--box-shadow-light);
     padding: 0.875rem 1rem;
     border-radius: 0.75rem;
     background-color: var(--primary);
+
+    @media screen and( max-width:576px) {
+      padding: 0.875rem 0.75rem;
+      margin-left: 0.5rem;
+    }
   }
 
-  &__filters{
-    all: unset; 
+  &__filters {
+    all: unset;
     cursor: pointer;
   }
 }
