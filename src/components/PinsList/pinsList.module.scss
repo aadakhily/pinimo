@@ -1,3 +1,17 @@
-.pins-list{
+.pins-list {
   display: flex;
+}
+
+.pins-list-conatainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
 }

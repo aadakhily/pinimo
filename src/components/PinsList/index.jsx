@@ -1,5 +1,5 @@
 import Pin from '../Pin'
-
+import Loading from '../Loading'
 import classes from './pinsList.module.scss'
 
 import Masonry from "react-masonry-css";
@@ -13,10 +13,20 @@ const breakpointColumnsObj = {
     500: 1,
 };
 
-const PostList = ({pins}) => (
-    <Masonry className={classes['pins-list']} breakpointCols={breakpointColumnsObj}>
-        {pins?.map((pin) => <Pin key={pin.id} pin={pin} />)}
-    </Masonry>
+const PostList = ({ pins, loading }) => (
+    <div className={classes['pins-list-conatainer']}>
+        <Masonry className={classes['pins-list']} breakpointCols={breakpointColumnsObj}>
+            {
+                loading ?
+                    <div className={classes['loading']}>
+                        <Loading />
+                    </div>
+                    :
+                    pins?.map((pin) => <Pin key={pin.id} pin={pin} />)
+            }
+
+        </Masonry>
+    </div>
 );
 
 export default PostList;

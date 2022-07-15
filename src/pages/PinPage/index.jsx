@@ -14,6 +14,7 @@ import Comments from '@/components/Comments';
 function PinPage() {
     const { pinId } = useParams()
     const [pin, setPin] = useState({})
+    const [loading, setLoading] = useState(false)
     const [otherPins, setOtherPins] = useState([])
 
     useEffect(() => {
@@ -28,21 +29,22 @@ function PinPage() {
 
             fetchOtherPins(data.category)
         } catch (error) {
-
+            console.error(error);
         }
     }
 
     async function fetchOtherPins(category) {
         try {
+            setLoading(true)
             const { data } = await fetchApi.get('/pins', {
                 params: { category: category }
             })
 
             setOtherPins(data)
-
-            console.log('other', otherPin);
         } catch (error) {
-
+            console.error(error)
+        }finally{
+            setLoading(false)
         }
     }
 
@@ -104,7 +106,7 @@ function PinPage() {
                     otherPins &&
                     <div className={classes['other-pins']}>
                         <h3 className={classes['other-pins__title']}>See More Pins</h3>
-                        <PinsList pins={otherPins} />
+                        <PinsList pins={otherPins} loading={loading} />
                     </div>
                 }
             </div>

@@ -6,12 +6,14 @@ import fetchApi from '@/utils/fetchApi'
 
 const Home = () => {
   const [pins, setPins] = useState([])
-  const [searchInput , setSearchInput] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [searchInput, setSearchInput] = useState('')
 
   async function fetchPins() {
     try {
-      const { data } = await fetchApi.get('/pins',{
-        params:{
+      setLoading(true)
+      const { data } = await fetchApi.get('/pins', {
+        params: {
           q: searchInput
         }
       })
@@ -19,6 +21,8 @@ const Home = () => {
       setPins(data)
     } catch (error) {
       console.error(error)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -27,7 +31,7 @@ const Home = () => {
   return (
     <DefaultLayout>
       <SearchHeader onSearch={setSearchInput} value={searchInput} />
-      <PinsList pins={pins} />
+      <PinsList pins={pins} loading={loading} />
     </DefaultLayout>
   )
 }
