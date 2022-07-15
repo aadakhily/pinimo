@@ -31,10 +31,11 @@ export const AuthProvider = ({ children }) => {
     }
 
     function login({ accessToken, user }) {
+        const { email, firstName, lastName, id } = user 
         localStorage.setItem('token', accessToken);
-        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('user', JSON.stringify({ email, firstName, lastName, id}));
         
-        setCurrentUser({user});
+        setCurrentUser({ email, firstName, lastName, id});
         setToken(accessToken)
     }
 

@@ -12,7 +12,8 @@ function Pin({ pin }) {
                 <div className={classes['pin__avatar']}>{`${pin?.creator?.firstName[0]}${pin?.creator?.lastName[0]}`}</div>
                 <div className={classes['pin__user-info']}>
                     <p className={classes['pin__title']}>{pin.title}</p>
-                    <Link to={`/user/${pin?.creator?.id}`} className={classes['pin__user-email']}>{pin?.creator?.email}</Link>
+                    
+                    <span  className={classes['pin__user-email']}>{pin?.creator?.email}</span>
                 </div>
             </div>
         </Link>
