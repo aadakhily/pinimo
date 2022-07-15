@@ -2,7 +2,7 @@
 import { useContext } from 'react';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate , Link } from 'react-router-dom'
 
 import fetchApi from '@/utils/fetchApi'
 import { REGEX_PATERN_FOR_EMAIL } from '@/utils/validation'
@@ -12,9 +12,9 @@ import authContext from '@/context/auth';
 import classes from './register.module.scss'
 
 function Register() {
-    const { register, handleSubmit, formState: { errors } } = useForm()
     const navigate = useNavigate()
     const { login } = useContext(authContext)
+    const { register, handleSubmit, formState: { errors } } = useForm()
 
     async function registerHandler(formData) {
         try {
@@ -67,6 +67,7 @@ function Register() {
                 </div>
 
                 <button type="submit" className={classes['register-form__submit']}>Create Account</button>
+                <Link to='/login' className={classes['register-form__login-link']}>or Login</Link>
 
             </form>
         </div>

@@ -12,9 +12,8 @@ import authContext from '@/context/auth';
 
 
 function Login() {
-  const { login } = useContext(authContext)
-
   const navigate = useNavigate()
+  const { login } = useContext(authContext)
   const { register, handleSubmit, formState: { errors } } = useForm()
 
   async function loginHandler(formData) {
@@ -33,14 +32,14 @@ function Login() {
     <div className={classes['login-page']}>
       <form onSubmit={handleSubmit(loginHandler)} className={classes['login-form']}>
 
-        <h1 className={classes['login-form__title']}>Login to Pinimo</h1>
+        <h1 className={classes['login-form__title']}>Login To Pinimo</h1>
 
         <div className={classes['login-form__input-container']}>
           <label htmlFor="email" className={classes['login-form__label']}>Email :</label>
 
           <input type="email" id='email' className={classes['login-form__input']} {...register('email', { required: true, pattern: REGEX_PATERN_FOR_EMAIL })} />
 
-          {errors.email && <span className={classes['text-error']}>email is required</span>}
+          {errors.email && <span className={classes['text-error']}>Email is required</span>}
         </div>
 
         <div className={classes['login-form__input-container']}>
