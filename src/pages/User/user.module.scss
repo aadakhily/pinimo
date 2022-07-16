@@ -11,6 +11,7 @@
   padding: 0.5rem;
   border-radius: 0.75rem;
   position: relative;
+  box-shadow: var(--box-shadow-light);
 
   &__background {
     width: 100%;
@@ -65,6 +66,11 @@
       font-weight: 400;
       font-size: 1rem;
     }
+  }
+
+  &__bio{
+    margin: 0.5rem;
+    font-size: 1rem;
   }
 }
 

@@ -7,10 +7,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import NewPin from '@/pages/NewPin';
+import UserPage from "@/pages/User";
+import Setting from "@/pages/Setting";
 import PinPage from '@/pages/PinPage';
 import Register from "@/pages/Register";
 import BookmarkPage from "@/pages/Bookmark";
-import UserPage from "@/pages/User";
 
 const App = () => {
   return (
@@ -29,6 +30,8 @@ const App = () => {
         <Route path="/user/:userId" element={<UserPage />} />
 
         <Route path="/bookmarks" element={<BookmarkPage />} />
+        
+        <Route path="/setting" element={<Setting />} />
 
         <Route path="/*" element={<Home />} />
       </Routes>

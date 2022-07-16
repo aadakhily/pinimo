@@ -1,9 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+
+// utils
+import fetchApi from '@/utils/fetchApi';
+
+// components
+import PinsList from '@/components/PinsList'
+import DefaultLayout from "@/layouts/default";
+
+// style
 import classes from './user.module.scss'
-import DefaultLayout from "../../layouts/default";
-import PinsList from '../../components/PinsList'
-import fetchApi from '../../utils/fetchApi';
 
 function UserPage() {
     const { userId } = useParams()
@@ -48,15 +54,16 @@ function UserPage() {
             <div className={classes['user-page']}>
                 <div className={classes['user']}>
                     <div className={classes['user__background']}>
-                        {/* <img src={userPins[2].image} alt="" /> */}
+                        {user?.background && <img src={user?.background} alt="background" />}
                     </div>
 
                     <div className={classes['user__avatar']}>
-                        {/* <img src={userPins[7].image} alt="" /> */}
+                        {user?.avatar && <img src={user?.avatar} alt="avatar" />}
                     </div>
 
                     <h4 className={classes['user__name']}>{`${user?.firstName} ${user?.lastName}`}</h4>
                     <span className={classes['user__email']}>{user?.email}</span>
+                    <p className={classes['user__bio']}>{ user?.bio }</p>
                 </div>
 
                 <div className={classes['user__pins']}>

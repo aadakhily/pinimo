@@ -4,11 +4,13 @@ import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form'
 import { useNavigate , Link } from 'react-router-dom'
 
+// utils
 import fetchApi from '@/utils/fetchApi'
 import { REGEX_PATERN_FOR_EMAIL } from '@/utils/validation'
 
 import authContext from '@/context/auth';
 
+// style
 import classes from './register.module.scss'
 
 function Register() {
@@ -41,7 +43,7 @@ function Register() {
 
                     <input type="text" id='firstName' className={classes['register-form__input']} {...register('firstName', { required: true })} />
 
-                    {errors.firstName && <span className={classes['text-error']}>email is required</span>}
+                    {errors.firstName && <span className={classes['text-error']}>First Name is required</span>}
                 </div>
 
                 <div className={classes['register-form__input-container']}>
@@ -49,7 +51,7 @@ function Register() {
 
                     <input type="text" id='lastName' className={classes['register-form__input']} {...register('lastName', { required: true })} />
 
-                    {errors.lastName && <span className={classes['text-error']}>email is required</span>}
+                    {errors.lastName && <span className={classes['text-error']}>Last Name is required</span>}
                 </div>
 
                 <div className={classes['register-form__input-container']}>
