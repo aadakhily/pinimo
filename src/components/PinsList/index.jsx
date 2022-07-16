@@ -21,8 +21,10 @@ const PostList = ({ pins, loading }) => (
                 </div>
                 :
                 <Masonry className={classes['pins-list']} breakpointCols={breakpointColumnsObj}>
-                    {
+                    {pins.length && !loading ?
                         pins?.map((pin) => <Pin key={pin.id} pin={pin} />)
+                        :
+                        <p className={classes['pins-list__empty']}>Does'nt exist any Pin</p>
                     }
                 </Masonry>
         }

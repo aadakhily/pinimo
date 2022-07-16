@@ -22,7 +22,7 @@ function Setting() {
     const [avatar, setAvatar] = useState()
     const { register, handleSubmit } = useForm()
     const [background, setbackground] = useState()
-    const { currentUser } = useContext(authContext);
+    const { currentUser , updateUser } = useContext(authContext);
 
     useEffect(() => {
         fetchUser()
@@ -67,10 +67,12 @@ function Setting() {
                 ...formData, avatar, background
             }
 
-            await fetchApi.patch(`/users/${user.id}`, body)
+            const { data } = await fetchApi.patch(`/users/${user.id}`, body)
+
+            updateUser(data)
 
             toast.success('Your Profile Edited Successfully')
-            
+
             navigate(`/user/${user.id}`)
         } catch (error) {
             console.error(error);

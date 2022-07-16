@@ -6,6 +6,7 @@ const authContext = createContext({
     currentUser: {},
     login: () => { },
     logout: () => { },
+    updateUser: () => { }
 })
 
 export const AuthProvider = ({ children }) => {
@@ -39,6 +40,13 @@ export const AuthProvider = ({ children }) => {
         setToken(accessToken)
     }
 
+    function updateUser(user) {
+        const { email, firstName, lastName, id } = user
+        localStorage.setItem('user', JSON.stringify({ email, firstName, lastName, id }));
+
+        setCurrentUser({ email, firstName, lastName, id });
+    }
+
     function logout() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
@@ -52,6 +60,7 @@ export const AuthProvider = ({ children }) => {
         login,
         logout,
         currentUser,
+        updateUser
     }
 
     return (
