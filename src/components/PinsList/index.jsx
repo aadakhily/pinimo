@@ -1,7 +1,6 @@
 import Pin from '../Pin'
 import Loading from '../Loading'
 import classes from './pinsList.module.scss'
-
 import Masonry from "react-masonry-css";
 
 const breakpointColumnsObj = {

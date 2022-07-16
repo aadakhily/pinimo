@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext  } from 'react'
 import DefualtLayout from '@/layouts/default'
 import authContext from '@/context/auth'
 import fetchApi from '@/utils/fetchApi';
@@ -39,7 +39,7 @@ function BookmarkPage() {
     return (
         <DefualtLayout>
             <div className={classes['bookmarks']}>
-                <h2 className={classes['bookmarks__title']}>You're Bookmarked Pins</h2>
+                <h2 className={classes['bookmarks__title']}>Your Bookmarked Pins</h2>
                 <PinsList pins={bookmarkedPins} loading={loading} />
             </div>
         </DefualtLayout>
